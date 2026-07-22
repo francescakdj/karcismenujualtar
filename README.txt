@@ -18,3 +18,7 @@ REVISI:
 - Nomor section 01, 02, dst. dihapus
 - Ayat pembuka dibuat 36px
 - Kale & Ancis pada closing memakai font handwriting
+
+
+REV16:
+- Seluruh bagian The Story of Us dihapus dari website.
