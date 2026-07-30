@@ -830,3 +830,10 @@ body{margin:0;background:#f6f1e8;color:#272321;font-family:"DM Sans",sans-serif;
     margin-top:34px;
   }
 }
+
+/* Final integration: music and RSVP status */
+.music-toggle{display:grid;place-items:center;transition:.25s ease;cursor:pointer}
+.music-toggle.playing{background:#8b1e2d;color:#fff;border-color:#8b1e2d;animation:musicPulse 2s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.form-note{min-height:1.5em;color:#8b1e2d;line-height:1.5}
+#rsvpSubmit:disabled{opacity:.6;cursor:wait}
