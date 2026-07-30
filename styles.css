@@ -941,3 +941,18 @@ body{margin:0;background:#f6f1e8;color:#272321;font-family:"DM Sans",sans-serif;
     gap:5px!important;
   }
 }
+
+/* Live Wishes */
+.wish-list article p{
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  line-height:1.7;
+}
+.wish-loading,
+.wish-empty{
+  grid-column:1/-1;
+  margin:0;
+  padding:24px 0;
+  color:#756c66;
+  line-height:1.7;
+}

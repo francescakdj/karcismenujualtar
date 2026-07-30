@@ -30,6 +30,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  async function loadWishes() {
+    const wishList = document.getElementById('wishList');
+    const wishStatus = document.getElementById('wishStatus');
+    if (!wishList || !endpointReady()) return;
+
+    try {
+      const url = `${APPS_SCRIPT_URL}?action=wishes&limit=30&t=${Date.now()}`;
+      const response = await fetch(url, {method: 'GET', cache: 'no-store'});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const result = await response.json();
+      const wishes = Array.isArray(result.wishes) ? result.wishes : [];
+
+      if (!wishes.length) {
+        wishList.innerHTML = '<p class="wish-empty">Belum ada ucapan. Jadilah yang pertama mengirimkan doa untuk Kale &amp; Ancis.</p>';
+        if (wishStatus) wishStatus.textContent = '';
+        return;
+      }
+
+      wishList.innerHTML = wishes.map(item => `
+        <article>
+          <h3>${escapeHtml(item.name || 'Tamu')}</h3>
+          <p>${escapeHtml(item.wish || '')}</p>
+        </article>
+      `).join('');
+
+      if (wishStatus) wishStatus.textContent = '';
+    } catch (error) {
+      console.error('Gagal memuat ucapan:', error);
+      wishList.innerHTML = '<p class="wish-empty">Ucapan belum dapat dimuat. Silakan coba kembali beberapa saat lagi.</p>';
+      if (wishStatus) wishStatus.textContent = '';
+    }
+  }
+
   if (guestId) {
     sendEvent({
       action: 'open',
@@ -38,6 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
       userAgent: navigator.userAgent
     }).catch(() => {});
   }
+
+  loadWishes();
 
   if (openButton && opening && site) {
     openButton.addEventListener('click', async () => {
@@ -167,6 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rsvpForm.reset();
         if (guestIdInput) guestIdInput.value = guestId;
         if (sourceInput) sourceInput.value = source;
+
+        // Beri waktu Apps Script menulis ke Spreadsheet, lalu muat ulang ucapan.
+        setTimeout(loadWishes, 1800);
       } catch (_) {
         rsvpStatus.textContent = 'RSVP belum berhasil dikirim. Silakan coba kembali.';
       } finally {
