@@ -51,7 +51,8 @@
 </div>
 
 <main id="mainSite" class="site" aria-hidden="true">
-<button class="music-toggle" type="button" title="Musik ditambahkan pada tahap berikutnya">♪</button>
+<button class="music-toggle" id="musicToggle" type="button" aria-label="Putar atau jeda musik" title="Putar atau jeda musik">♪</button>
+<audio id="weddingMusic" src="assets/wedding-music.mp3" preload="auto" loop></audio>
 
 <section class="section verse-section reveal">
   <div class="ornament-line"></div>
@@ -121,7 +122,7 @@
 </section>
 
 <section class="section gallery-section reveal">
-  <div class="section-heading"><p>GALERI FOTO</p><h2>Our Moments</h2></div>
+  <div class="section-heading"><h2>Our Moments</h2></div>
   <div class="gallery-grid">
     <button class="gallery-item g1"><img src="assets/gallery-1.jpg" alt=""></button>
     <button class="gallery-item g2"><img src="assets/gallery-2.jpg" alt=""></button>
@@ -136,14 +137,47 @@
 <section class="section rsvp-section reveal">
   <div class="section-heading"><p>MOHON KONFIRMASI SEBELUM 3 OKTOBER 2026</p><h2>RSVP</h2></div>
   <form class="rsvp-form" id="rsvpForm">
-    <label><span>Nama</span><input type="text" required placeholder="Tuliskan nama Anda"></label>
+    <input type="hidden" id="guestId" name="guestId">
+    <input type="hidden" id="source" name="source">
+
+    <label>
+      <span>Nama</span>
+      <input id="rsvpName" name="rsvpName" type="text" required placeholder="Tuliskan nama Anda">
+    </label>
+
     <div class="form-columns">
-      <label><span>Sakramen Pernikahan</span><select required><option value="">Pilih jumlah kehadiran</option><option>1</option><option>2</option><option>3</option><option>4</option><option>Tidak Hadir</option></select></label>
-      <label><span>Resepsi Pernikahan</span><select required><option value="">Pilih jumlah kehadiran</option><option>1</option><option>2</option><option>3</option><option>4</option><option>Tidak Hadir</option></select></label>
+      <label>
+        <span>Sakramen Pernikahan</span>
+        <select id="churchAttendance" name="churchAttendance" required>
+          <option value="">Pilih jumlah kehadiran</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Resepsi Pernikahan</span>
+        <select id="receptionAttendance" name="receptionAttendance" required>
+          <option value="">Pilih jumlah kehadiran</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+        </select>
+      </label>
     </div>
-    <label><span>Ucapan & Doa</span><textarea rows="5" maxlength="400" placeholder="Tuliskan ucapan dan doa untuk Kale & Ancis"></textarea></label>
-    <button class="btn btn-primary" type="submit">Submit</button>
-    <p class="form-note">Pada tahap 1, form belum terhubung ke Google Sheets.</p>
+
+    <label>
+      <span>Ucapan &amp; Doa</span>
+      <textarea id="wish" name="wish" rows="5" maxlength="400" placeholder="Tuliskan ucapan dan doa untuk Kale & Ancis"></textarea>
+    </label>
+
+    <button class="btn btn-primary" id="rsvpSubmit" type="submit">Kirim RSVP</button>
+    <p class="form-note" id="rsvpStatus" aria-live="polite"></p>
   </form>
 </section>
 
