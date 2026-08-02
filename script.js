@@ -46,7 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const salutationElement = document.getElementById('coverSalutation');
     const guestNameElement = document.getElementById('coverGuestName');
 
-    if (!recipient || !guestId || !endpointReady()) return;
+    if (!recipient) return;
+    if (!guestId || !endpointReady()) {
+      recipient.hidden = false;
+      return;
+    }
 
     try {
       const url = `${APPS_SCRIPT_URL}?action=guest&guestId=${encodeURIComponent(guestId)}&t=${Date.now()}`;
@@ -59,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!result.ok || (!salutation && !guestName)) return;
 
-      salutationElement.textContent = salutation;
+      salutationElement.textContent = salutation || 'Bapak/Ibu';
       guestNameElement.textContent = guestName;
       recipient.hidden = false;
     } catch (error) {
