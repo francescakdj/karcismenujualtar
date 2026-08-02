@@ -98,3 +98,73 @@
     max-width:100%;
   }
 }
+
+
+/* Personalized invitation recipient — sourced from Master Guest columns C + B */
+.split-recipient{
+  width:min(88%,260px);
+  margin-top:2.35rem;
+  padding:.85rem .9rem .9rem;
+  border:1.35px solid #b28a48;
+  text-align:center;
+  color:#756f69;
+  background:rgba(250,246,240,.72);
+}
+
+.split-recipient[hidden]{
+  display:none!important;
+}
+
+.split-recipient-label{
+  margin:0 0 .55rem;
+  font-family:"DM Sans",sans-serif;
+  font-size:clamp(.54rem,.85vw,.68rem);
+  font-weight:400;
+  letter-spacing:.28em;
+  color:#9a7a45;
+}
+
+.split-recipient-name{
+  margin:0;
+  display:grid;
+  gap:.18rem;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(.82rem,1.15vw,1rem);
+  line-height:1.12;
+}
+
+.split-recipient-name span{
+  font-style:italic;
+  font-weight:400;
+}
+
+.split-recipient-name strong{
+  font-weight:500;
+}
+
+@media(max-width:600px){
+  .split-recipient{
+    width:92%;
+    margin-top:1.15rem;
+    padding:.56rem .52rem .60rem;
+    border-width:1.1px;
+  }
+
+  .split-recipient-label{
+    margin-bottom:.35rem;
+    font-size:clamp(.42rem,1.82vw,.50rem);
+    letter-spacing:.22em;
+  }
+
+  .split-recipient-name{
+    gap:.10rem;
+    font-size:clamp(.60rem,2.58vw,.72rem);
+    line-height:1.05;
+  }
+}
+
+@media(min-width:601px){
+  .split-recipient{
+    margin-top:1.65rem;
+  }
+}

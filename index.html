@@ -21,6 +21,14 @@
         <div class="split-date" aria-label="10 Oktober 2026">
           <span>10</span><i></i><span>10</span><i></i><span>26</span>
         </div>
+
+        <div class="split-recipient" id="coverRecipient" hidden>
+          <p class="split-recipient-label">TO</p>
+          <p class="split-recipient-name">
+            <span id="coverSalutation"></span>
+            <strong id="coverGuestName"></strong>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -174,7 +182,35 @@
 <section class="section gift-section reveal">
   <div class="section-heading"><h2>Wedding Gift</h2></div>
   <p class="gift-copy">Doa restu dan kehadiran Anda merupakan hadiah terindah bagi kami. Namun, apabila ingin berbagi tanda kasih, dapat disampaikan melalui rekening berikut.</p>
-  <div class="bank-block"><p class="bank-name">BCA</p><p class="account-number">870-565-5312</p><p class="account-name">FRANCESCA KARJADIDJAJA / KARL ANGGARA SUTEJA</p><button class="btn btn-outline" id="copyAccount" type="button">Salin Nomor Rekening</button></div>
+
+  <div class="bank-block">
+    <p class="bank-name">BCA</p>
+    <p class="account-number">870-565-5312</p>
+    <p class="account-name">FRANCESCA KARJADIDJAJA / KARL ANGGARA SUTEJA</p>
+    <button class="btn btn-outline" id="copyAccount" type="button">Salin Nomor Rekening</button>
+  </div>
+
+  <div class="gift-preference-note" aria-label="Informasi pemberian hadiah">
+    <p>Kami dengan hormat tidak menerima bunga papan, karangan bunga maupun kado berukuran besar.</p>
+
+    <div class="gift-preference-icons" aria-hidden="true">
+      <span class="gift-preference-icon">
+        <svg viewBox="0 0 64 64" role="img">
+          <circle cx="32" cy="32" r="28"></circle>
+          <path d="M24 41h16M26 41l2-15h8l2 15M30 26v-5h4v5M24 18c5 1 8 4 8 8-5-1-8-4-8-8ZM40 18c-5 1-8 4-8 8 5-1 8-4 8-8ZM12 12l40 40"></path>
+        </svg>
+      </span>
+
+      <span class="gift-preference-divider"></span>
+
+      <span class="gift-preference-icon">
+        <svg viewBox="0 0 64 64" role="img">
+          <circle cx="32" cy="32" r="28"></circle>
+          <path d="M19 28h26v20H19zM16 23h32v8H16zM32 23v25M24 23c-5 0-7-7-2-9 5-2 10 9 10 9M40 23c5 0 7-7 2-9-5-2-10 9-10 9M12 12l40 40"></path>
+        </svg>
+      </span>
+    </div>
+  </div>
 </section>
 
 <section class="section wishes-section reveal">

@@ -40,6 +40,33 @@ document.addEventListener('DOMContentLoaded', () => {
       .replaceAll("'", '&#039;');
   }
 
+
+  async function loadCoverRecipient() {
+    const recipient = document.getElementById('coverRecipient');
+    const salutationElement = document.getElementById('coverSalutation');
+    const guestNameElement = document.getElementById('coverGuestName');
+
+    if (!recipient || !guestId || !endpointReady()) return;
+
+    try {
+      const url = `${APPS_SCRIPT_URL}?action=guest&guestId=${encodeURIComponent(guestId)}&t=${Date.now()}`;
+      const response = await fetch(url, {method: 'GET', cache: 'no-store'});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const result = await response.json();
+      const salutation = String(result.salutation || '').trim();
+      const guestName = String(result.guestName || '').trim();
+
+      if (!result.ok || (!salutation && !guestName)) return;
+
+      salutationElement.textContent = salutation;
+      guestNameElement.textContent = guestName;
+      recipient.hidden = false;
+    } catch (error) {
+      console.error('Gagal memuat tujuan undangan:', error);
+    }
+  }
+
   async function loadWishes() {
     const wishList = document.getElementById('wishList');
     const wishStatus = document.getElementById('wishStatus');
@@ -83,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).catch(() => {});
   }
 
+  loadCoverRecipient();
   loadWishes();
 
   if (openButton && opening && site) {
