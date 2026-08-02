@@ -1310,3 +1310,48 @@ body{margin:0;background:#f6f1e8;color:#272321;font-family:"DM Sans",sans-serif;
     height:24px;
   }
 }
+
+
+/* Explicit custom icons: Indonesian standing flower board + oversized gift */
+.gift-preference-icon{
+  width:42px;
+  height:42px;
+}
+
+.gift-preference-icon svg{
+  overflow:visible;
+}
+
+.gift-preference-icon .icon-ring,
+.gift-preference-icon .icon-main,
+.gift-preference-icon .icon-slash{
+  fill:none;
+  stroke:currentColor;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.gift-preference-icon .icon-ring{
+  stroke-width:1.45;
+  opacity:.82;
+}
+
+.gift-preference-icon .icon-main{
+  stroke-width:1.7;
+}
+
+.gift-preference-icon .icon-slash{
+  stroke-width:2.1;
+}
+
+.gift-preference-icon .icon-dot{
+  fill:currentColor;
+  stroke:none;
+}
+
+@media(max-width:520px){
+  .gift-preference-icon{
+    width:34px;
+    height:34px;
+  }
+}
