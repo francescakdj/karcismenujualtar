@@ -87,9 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (openButton && opening && site) {
     openButton.addEventListener('click', async () => {
-      opening.classList.add('hidden');
-      site.classList.add('visible');
-      site.setAttribute('aria-hidden', 'false');
+      openButton.disabled = true;
+      opening.classList.add('opening-out');
+
+      setTimeout(() => {
+        site.classList.add('visible');
+        site.setAttribute('aria-hidden', 'false');
+      }, 180);
 
       if (music) {
         try {
@@ -101,8 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       setTimeout(() => {
+        opening.classList.add('hidden');
+      }, 1080);
+
+      setTimeout(() => {
         document.querySelector('.verse-section')?.scrollIntoView({behavior: 'smooth'});
-      }, 300);
+      }, 1220);
     });
   }
 
