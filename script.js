@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         site.classList.add('visible');
         site.setAttribute('aria-hidden', 'false');
-      }, 180);
+      }, 80);
 
       if (music) {
         try {
@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         opening.classList.add('hidden');
-      }, 1080);
+      }, 420);
 
       setTimeout(() => {
         document.querySelector('.verse-section')?.scrollIntoView({behavior: 'smooth'});
-      }, 1220);
+      }, 540);
     });
   }
 
